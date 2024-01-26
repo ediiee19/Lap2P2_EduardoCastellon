@@ -6,6 +6,7 @@ package lap2p2_eduardocastellon;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,18 +57,47 @@ public class Lap2P2_EduardoCastellon {
                 contraEncon = false;
                 System.out.println("Usuario o contraseña incorrecta");
             }
+            
+            System.out.println("hola");
+            boolean salida = true;
+            while (salida) {
+                String salir = JOptionPane.showInputDialog("desea salir?(si/no)");
+                if (salir.equalsIgnoreCase("si")) {
+                    JOptionPane.showMessageDialog(null, "Saliendo del programa...");
+                    menuLogIn = false;
+                    salida = false;
+                } else if (salir.equalsIgnoreCase("no")) {
+                    salida = false;
+                } else {
+                    System.out.println("Ingrese una opcion correcta");
+                }
+            }
         }//fin del while
     }
-    
-    public static void menuEstudiante(){
-        System.out.println("Bienvenido al menu de estudiante");   
+
+    public static void menuEstudiante() {
+        Scanner lea = new Scanner(System.in);
+        System.out.println("Bienvenido al menu de estudiante");
+        boolean menuE = true;
+        while (menuE) {
+            System.out.println("1- Listar contenido");
+            System.out.println("2- cerrar session");
+            int opc = lea.nextInt();
+            switch (opc) {
+                case 2: {
+                    System.out.println("cerrar session");
+                    menuE = false;
+                    break;
+                }
+            }
+        }
     }
-    
-    public static void menuProfesor(){
-        System.out.println("Bienvenido al menu de profesor");   
+
+    public static void menuProfesor() {
+        System.out.println("Bienvenido al menu de profesor");
     }
-    
-    public static void menuBibliotecario(){
+
+    public static void menuBibliotecario() {
         System.out.println("Bienvenido al menu de bibliotecario");
     }
 
