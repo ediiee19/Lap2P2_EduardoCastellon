@@ -112,7 +112,6 @@ public class Lap2P2_EduardoCastellon {
     }
     
     public static void agregar(){
-        System.out.println("Que desea agregar al inventario");;
         
 
     }
