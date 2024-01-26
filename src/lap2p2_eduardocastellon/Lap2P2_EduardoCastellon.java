@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Set;
 
-/**
- *
- * @author caste
- */
 public class Lap2P2_EduardoCastellon {
 
     public static ArrayList<Object> inventario = new ArrayList();
@@ -22,7 +18,7 @@ public class Lap2P2_EduardoCastellon {
 
         usuarios.add(new Usuarios("EduardoC", "Tinker100", "e"));//estudiante
         usuarios.add(new Usuarios("JavierL", "general300", "p"));//profesor
-        usuarios.add(new Usuarios("Rikardo,M", "chinfu20", "b"));//bibliotecario
+        usuarios.add(new Usuarios("RikardoM", "chinfu20", "b"));//bibliotecario
 
         boolean menuLogIn = true;
         while (menuLogIn) {
@@ -82,8 +78,9 @@ public class Lap2P2_EduardoCastellon {
         System.out.println("Bienvenido al menu de estudiante");
         boolean menuE = true;
         while (menuE) {
-            System.out.println("1- Listar contenido");
-            System.out.println("preione [2] para cerrar session");
+            System.out.println("---Menu---\n"
+                    + "1- Listar contenido\n"
+                    + "preione [2] para cerrar session");
             int opc = lea.nextInt();
             switch (opc) {
                 case 2: {
@@ -105,8 +102,9 @@ public class Lap2P2_EduardoCastellon {
         System.out.println("Bienvenido al menu de profesor");
         boolean menuE = true;
         while (menuE) {
-            System.out.println("1- Listar contenido\n"
-                    + "2- Agregar Libro\n"
+            System.out.println("---Menu---\n"
+                    + "1- Listar contenido\n"
+                    + "2- Agregar\n"
                     + "preione [3] para cerrar session");
 
             int opc = lea.nextInt();
@@ -134,9 +132,9 @@ public class Lap2P2_EduardoCastellon {
         System.out.println("Bienvenido al menu de blibliotecario");
         boolean menuE = true;
         while (menuE) {
-            System.out.println("---menu---"
+            System.out.println("---Menu---\n"
                     + "1- Listar contenido\n"
-                    + "2- Agregar Libro\n"
+                    + "2- Agregar\n"
                     + "3- Eliminar\n"
                     + "4- Actualizar\n"
                     + "preione [5] para cerrar session");
@@ -173,7 +171,7 @@ public class Lap2P2_EduardoCastellon {
         if (indice >= inventario.size()) {
             return;
         }
-        System.out.println(indice + "- " + inventario.get(indice).toString());
+        System.out.println((indice + 1) + "- " + inventario.get(indice).toString());
         indice++;
         listar(indice);
     }// fin listar
@@ -245,7 +243,7 @@ public class Lap2P2_EduardoCastellon {
                     System.out.println("Ingresar plataforma ");
                     String enlace = entrada.nextLine();
 
-                    inventario.add((Cursos) new Cursos(titulo, conferesista, fecha, enlace));
+                    inventario.add((Conferencias) new Conferencias(titulo, conferesista, fecha, enlace));
                     break;
                 }
             }
@@ -257,7 +255,7 @@ public class Lap2P2_EduardoCastellon {
         System.out.println("Ingrese el indice del elemento: ");
         int indice = lea.nextInt();
 
-        if (indice >= inventario.size()) {
+        if (indice > inventario.size()) {
             System.out.println("No existe tal elemento");
         } else {
             inventario.remove(indice - 1);
@@ -268,7 +266,7 @@ public class Lap2P2_EduardoCastellon {
     public static void actualizar() {
         Scanner lea = new Scanner(System.in);
         Scanner entrada = new Scanner(System.in);
-        System.out.println("Que desea actualizar"
+        System.out.println("Que desea actualizar\n"
                 + "Ingrece indice: ");
         int indice = lea.nextInt();
 
@@ -277,51 +275,55 @@ public class Lap2P2_EduardoCastellon {
         } else {
             if (inventario.get(indice) instanceof Libros) {
                 System.out.println("Ingresar nuevo titulo: ");
-                    String titulo = entrada.nextLine();
-                    System.out.println("Ingresar nuevo autor: ");
-                    String autor = entrada.nextLine();
-                    System.out.println("Ingresar nuevo genero: ");
-                    String genero = entrada.nextLine();
-                    System.out.println("Ingresar nuevo año: ");
-                    String year = entrada.nextLine();
-                    
-                    inventario.set(indice, (Libros) new Libros(titulo, autor, genero, year, year));              
+                String titulo = entrada.nextLine();
+                System.out.println("Ingresar nuevo autor: ");
+                String autor = entrada.nextLine();
+                System.out.println("Ingresar nuevo genero: ");
+                String genero = entrada.nextLine();
+                System.out.println("Ingresar nuevo año: ");
+                String year = entrada.nextLine();
+                System.out.println("Ingresar si esta disponible (si/no):");
+                String disp = entrada.nextLine();
+
+                inventario.set(indice, (Libros) new Libros(titulo, autor, genero, year, disp));
             } // fin libros
             else if (inventario.get(indice) instanceof Articulos) {
                 System.out.println("Ingresar titulo: ");
-                    String titulo = entrada.nextLine();
-                    System.out.println("Ingresar autor: ");
-                    String autor = entrada.nextLine();
-                    System.out.println("Ingresar tema: ");
-                    String tema = entrada.nextLine();
-                    System.out.println("Ingresar fecha de publicacion: ");
-                    String fecha = entrada.nextLine();
-                    
-                    inventario.set(indice, (Articulos) new Articulos(titulo, autor, tema, fecha, fecha));              
-            }// fin articulos
-            else if(inventario.get(indice) instanceof Cursos){
-                System.out.println("Ingresar titulo: ");
-                    String titulo = entrada.nextLine();
-                    System.out.println("Ingresar instructor: ");
-                    String instructor = entrada.nextLine();
-                    System.out.println("Ingresar tema: ");
-                    String duracion = entrada.nextLine();
-                    System.out.println("Ingresar plataforma ");
-                    String plataforma = entrada.nextLine();
-                    
-                    inventario.set(indice, (Cursos) new Cursos(titulo, instructor, duracion, plataforma));
-            }// fin cursos
-            else if(inventario.get(indice) instanceof Conferencias){
-                System.out.println("Ingresar titulo: ");
-                    String titulo = entrada.nextLine();
-                    System.out.println("Ingresar instructor: ");
-                    String conferesista = entrada.nextLine();
-                    System.out.println("Ingresar tema: ");
-                    String fecha = entrada.nextLine();
-                    System.out.println("Ingresar plataforma ");
-                    String enlace = entrada.nextLine();
+                String titulo = entrada.nextLine();
+                System.out.println("Ingresar autor: ");
+                String autor = entrada.nextLine();
+                System.out.println("Ingresar tema: ");
+                String tema = entrada.nextLine();
+                System.out.println("Ingresar fecha de publicacion: ");
+                String fecha = entrada.nextLine();
+                System.out.println("Ingresar si es posible acceso en linea (si/no):");
+                String acceso = entrada.nextLine();
 
-                    inventario.set(indice, (Cursos) new Cursos(titulo, conferesista, fecha, enlace));
+                inventario.set(indice, (Articulos) new Articulos(titulo, autor, tema, fecha, acceso));
+            }// fin articulos
+            else if (inventario.get(indice) instanceof Cursos) {
+                System.out.println("Ingresar titulo: ");
+                String titulo = entrada.nextLine();
+                System.out.println("Ingresar instructor: ");
+                String instructor = entrada.nextLine();
+                System.out.println("Ingresar tema: ");
+                String duracion = entrada.nextLine();
+                System.out.println("Ingresar plataforma ");
+                String plataforma = entrada.nextLine();
+
+                inventario.set(indice, (Cursos) new Cursos(titulo, instructor, duracion, plataforma));
+            }// fin cursos
+            else if (inventario.get(indice) instanceof Conferencias) {
+                System.out.println("Ingresar titulo: ");
+                String titulo = entrada.nextLine();
+                System.out.println("Ingresar instructor: ");
+                String conferesista = entrada.nextLine();
+                System.out.println("Ingresar tema: ");
+                String fecha = entrada.nextLine();
+                System.out.println("Ingresar plataforma ");
+                String enlace = entrada.nextLine();
+
+                inventario.set(indice, (Conferencias) new Conferencias(titulo, conferesista, fecha, enlace));
             }// fin conferencias
         }//fin if busqueda de clase
     }// fin actualizar
