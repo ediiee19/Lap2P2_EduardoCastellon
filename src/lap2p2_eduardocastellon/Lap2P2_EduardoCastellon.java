@@ -22,7 +22,7 @@ public class Lap2P2_EduardoCastellon {
         
         
         usuarios.add(new Usuarios("EduardoC", "Tinker100", "e"));//estudiante
-        usuarios.add(new Usuarios("JaveriL", "general300", "p"));//profesor
+        usuarios.add(new Usuarios("JavierL", "general300", "p"));//profesor
         usuarios.add(new Usuarios("Rikardo,M", "chinfu20", "b"));//bibliotecario
 
         boolean menuLogIn = true;
@@ -63,9 +63,10 @@ public class Lap2P2_EduardoCastellon {
             
             boolean salida = true;
             while (salida) {
-                String salir = JOptionPane.showInputDialog("desea salir?(si/no)");
+                System.out.println("desea sali? (si/no)");
+                String salir = entrada.nextLine();
                 if (salir.equalsIgnoreCase("si")) {
-                    JOptionPane.showMessageDialog(null, "Saliendo del programa...");
+                    System.out.println("Saliendo del programa...");
                     menuLogIn = false;
                     salida = false;
                 } else if (salir.equalsIgnoreCase("no")) {
@@ -83,38 +84,98 @@ public class Lap2P2_EduardoCastellon {
         boolean menuE = true;
         while (menuE) {
             System.out.println("1- Listar contenido");
-            System.out.println("2- cerrar session");
+            System.out.println("preione [2] para cerrar session");
             int opc = lea.nextInt();
             switch (opc) {
                 case 2: {
-                    System.out.println("cerrar session");
+                    System.out.println("Cerrando session\n");
                     menuE = false;
                     break;
                 }
                 case 1:{
-                    listar();
+                    int indice = 0;
+                    listar(indice);
                     break;
                 }
             }
         }
-    }
+    }// fin menu de estudiante
 
     public static void menuProfesor() {
+        Scanner lea = new Scanner(System.in);
         System.out.println("Bienvenido al menu de profesor");
-    }
+        boolean menuE = true;
+        while (menuE) {
+            System.out.println("1- Listar contenido\n"
+                    + "2- Agregar Libro\n"
+                    + "preione [3] para cerrar session");
+
+            int opc = lea.nextInt();
+            switch (opc) {
+                case 3: {
+                    System.out.println("Cerrando session\n");
+                    menuE = false;
+                    break;
+                }
+                case 1:{
+                    int indice = 0;
+                    listar(indice);
+                    break;
+                }
+                case 2:{
+                    agregar();
+                    break;
+                }
+            }
+        }
+    }//fin  de menu profesor
 
     public static void menuBibliotecario() {
         System.out.println("Bienvenido al menu de bibliotecario");
     }
     
-    public static void listar(){
-        
+    public static void listar(int indice){
+        if (indice >= inventario.size()) {
+            return;
+        }
+        System.out.println(inventario.get(indice).toString());
+        indice++;
+        listar(indice);
     }
     
     public static void agregar(){
-        
-
+        Scanner lea = new Scanner(System.in);
+        Scanner entrada = new Scanner(System.in);
+        boolean agregar = true;
+        while (agregar) {
+            System.out.println("que desea agregar?\n"
+                    + "1- Libros\n"
+                    + "2- Articulos\n"
+                    + "3- Cursos\n"
+                    + "4- Conferencias\n"
+                    + "presione [5] para salir");
+            int opc = lea.nextInt();
+            switch(opc){
+                case 5:{
+                    System.out.println("Saliendo...");
+                    agregar =false;
+                    break;
+                }
+                case 1:{
+                    System.out.println("Ingresar titulo: ");
+                    String titulo = entrada.nextLine();
+                    System.out.println("Ingresar autor: ");
+                    String autor = entrada.nextLine();
+                    System.out.println("Ingresar genero: ");
+                    String genero = entrada.nextLine();
+                    System.out.println("Ingresar año: ");
+                    String year = entrada.nextLine();
+                    inventario.add((Libros) new Libros(titulo, autor, genero, year, "si"));
+                    break;
+                }
+                
+            }
+            
+        }
     }
-    
-
 }

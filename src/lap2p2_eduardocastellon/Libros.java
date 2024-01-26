@@ -13,10 +13,10 @@ public class Libros {
    private String titulo;
    private String autor;
    private String genero;
-   private int year;
+   private String year;
    private String disp;
 
-    public Libros(String titulo, String autor, String genero, int year, String disp) {
+    public Libros(String titulo, String autor, String genero, String year, String disp) {
         this.titulo = titulo;
         this.autor = autor;
         this.genero = genero;
@@ -48,11 +48,11 @@ public class Libros {
         this.genero = genero;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
@@ -66,7 +66,7 @@ public class Libros {
 
     @Override
     public String toString() {
-        return  titulo + " Por " + autor + " del " + genero + " publicado en " + year + "| disponibilidad: " + disp;
+        return  "libro " + titulo + " Por " + autor + " del " + genero + " publicado en " + year + "| disponibilidad: " + disp;
     }
    
    

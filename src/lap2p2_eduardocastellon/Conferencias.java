@@ -56,7 +56,7 @@ public class Conferencias {
 
     @Override
     public String toString() {
-        return "Conferencia" + titulo + " por " + conferesista + " el dia " + fecha + "| enlace: " + enlace;
+        return "Conferencia " + titulo + " por " + conferesista + " el dia " + fecha + "| enlace: " + enlace;
     }
     
     

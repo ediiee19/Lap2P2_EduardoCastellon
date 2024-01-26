@@ -66,7 +66,7 @@ public class Articulos {
 
     @Override
     public String toString() {
-        return titulo + " por " + autor + " acerca de " + tema + " publicado el " + fecha + "| Acceso virtual" + acceso;
+        return "Articulo " + titulo + " por " + autor + " acerca de " + tema + " publicado el " + fecha + "| Acceso virtual" + acceso;
     }
     
     
