@@ -273,7 +273,7 @@ public class Lap2P2_EduardoCastellon {
         if (indice >= inventario.size()) {
             System.out.println("No existe tal elemento");
         } else {
-            if (inventario.get(indice) instanceof Libros) {
+            if (inventario.get(indice -1) instanceof Libros) {
                 System.out.println("Ingresar nuevo titulo: ");
                 String titulo = entrada.nextLine();
                 System.out.println("Ingresar nuevo autor: ");
@@ -285,9 +285,9 @@ public class Lap2P2_EduardoCastellon {
                 System.out.println("Ingresar si esta disponible (si/no):");
                 String disp = entrada.nextLine();
 
-                inventario.set(indice, (Libros) new Libros(titulo, autor, genero, year, disp));
+                inventario.set(indice -1, (Libros) new Libros(titulo, autor, genero, year, disp));
             } // fin libros
-            else if (inventario.get(indice) instanceof Articulos) {
+            else if (inventario.get(indice -1) instanceof Articulos) {
                 System.out.println("Ingresar titulo: ");
                 String titulo = entrada.nextLine();
                 System.out.println("Ingresar autor: ");
@@ -299,9 +299,9 @@ public class Lap2P2_EduardoCastellon {
                 System.out.println("Ingresar si es posible acceso en linea (si/no):");
                 String acceso = entrada.nextLine();
 
-                inventario.set(indice, (Articulos) new Articulos(titulo, autor, tema, fecha, acceso));
+                inventario.set(indice -1, (Articulos) new Articulos(titulo, autor, tema, fecha, acceso));
             }// fin articulos
-            else if (inventario.get(indice) instanceof Cursos) {
+            else if (inventario.get(indice -1) instanceof Cursos) {
                 System.out.println("Ingresar titulo: ");
                 String titulo = entrada.nextLine();
                 System.out.println("Ingresar instructor: ");
@@ -311,7 +311,7 @@ public class Lap2P2_EduardoCastellon {
                 System.out.println("Ingresar plataforma ");
                 String plataforma = entrada.nextLine();
 
-                inventario.set(indice, (Cursos) new Cursos(titulo, instructor, duracion, plataforma));
+                inventario.set(indice -1, (Cursos) new Cursos(titulo, instructor, duracion, plataforma));
             }// fin cursos
             else if (inventario.get(indice) instanceof Conferencias) {
                 System.out.println("Ingresar titulo: ");
@@ -323,7 +323,7 @@ public class Lap2P2_EduardoCastellon {
                 System.out.println("Ingresar plataforma ");
                 String enlace = entrada.nextLine();
 
-                inventario.set(indice, (Conferencias) new Conferencias(titulo, conferesista, fecha, enlace));
+                inventario.set(indice -1, (Conferencias) new Conferencias(titulo, conferesista, fecha, enlace));
             }// fin conferencias
         }//fin if busqueda de clase
     }// fin actualizar
