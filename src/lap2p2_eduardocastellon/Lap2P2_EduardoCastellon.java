@@ -173,9 +173,31 @@ public class Lap2P2_EduardoCastellon {
                     inventario.add((Libros) new Libros(titulo, autor, genero, year, "si"));
                     break;
                 }
-                
-            }
-            
+                case 2:{
+                    System.out.println("Ingresar titulo: ");
+                    String titulo = entrada.nextLine();
+                    System.out.println("Ingresar autor: ");
+                    String autor = entrada.nextLine();
+                    System.out.println("Ingresar tema: ");
+                    String tema = entrada.nextLine();
+                    System.out.println("Ingresar fecha de publicacion: ");
+                    String fecha = entrada.nextLine();
+                    inventario.add((Articulos) new Articulos(titulo, autor, tema, fecha, "si"));
+                    break;
+                }
+                case 3:{
+                    System.out.println("Ingresar titulo: ");
+                    String titulo = entrada.nextLine();
+                    System.out.println("Ingresar instructor: ");
+                    String instructor = entrada.nextLine();
+                    System.out.println("Ingresar tema: ");
+                    String duracion = entrada.nextLine();
+                    System.out.println("Ingresar fecha de publicacion: ");
+                    String fecha = entrada.nextLine();
+                    inventario.add((Cursos) new Cursos(titulo, instructor, duracion, fecha));
+                    break;
+                }
+            }  
         }
     }
 }
