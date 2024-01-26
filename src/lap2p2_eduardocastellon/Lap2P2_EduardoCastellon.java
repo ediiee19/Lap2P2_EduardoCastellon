@@ -14,10 +14,13 @@ import javax.swing.JOptionPane;
  */
 public class Lap2P2_EduardoCastellon {
 
+    public static ArrayList <Object>inventario = new ArrayList();
+    
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         ArrayList<Usuarios> usuarios = new ArrayList();
-
+        
+        
         usuarios.add(new Usuarios("EduardoC", "Tinker100", "e"));//estudiante
         usuarios.add(new Usuarios("JaveriL", "general300", "p"));//profesor
         usuarios.add(new Usuarios("Rikardo,M", "chinfu20", "b"));//bibliotecario
@@ -58,7 +61,6 @@ public class Lap2P2_EduardoCastellon {
                 System.out.println("Usuario o contraseña incorrecta");
             }
             
-            System.out.println("hola");
             boolean salida = true;
             while (salida) {
                 String salir = JOptionPane.showInputDialog("desea salir?(si/no)");
@@ -73,7 +75,7 @@ public class Lap2P2_EduardoCastellon {
                 }
             }
         }//fin del while
-    }
+    }//fin del main
 
     public static void menuEstudiante() {
         Scanner lea = new Scanner(System.in);
@@ -89,6 +91,10 @@ public class Lap2P2_EduardoCastellon {
                     menuE = false;
                     break;
                 }
+                case 1:{
+                    listar();
+                    break;
+                }
             }
         }
     }
@@ -100,5 +106,16 @@ public class Lap2P2_EduardoCastellon {
     public static void menuBibliotecario() {
         System.out.println("Bienvenido al menu de bibliotecario");
     }
+    
+    public static void listar(){
+        
+    }
+    
+    public static void agregar(){
+        System.out.println("Que desea agregar al inventario");;
+        
+
+    }
+    
 
 }
