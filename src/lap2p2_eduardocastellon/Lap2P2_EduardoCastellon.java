@@ -14,13 +14,12 @@ import javax.swing.JOptionPane;
  */
 public class Lap2P2_EduardoCastellon {
 
-    public static ArrayList <Object>inventario = new ArrayList();
-    
+    public static ArrayList<Object> inventario = new ArrayList();
+
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         ArrayList<Usuarios> usuarios = new ArrayList();
-        
-        
+
         usuarios.add(new Usuarios("EduardoC", "Tinker100", "e"));//estudiante
         usuarios.add(new Usuarios("JavierL", "general300", "p"));//profesor
         usuarios.add(new Usuarios("Rikardo,M", "chinfu20", "b"));//bibliotecario
@@ -60,7 +59,7 @@ public class Lap2P2_EduardoCastellon {
                 contraEncon = false;
                 System.out.println("Usuario o contraseña incorrecta");
             }
-            
+
             boolean salida = true;
             while (salida) {
                 System.out.println("desea sali? (si/no)");
@@ -92,7 +91,7 @@ public class Lap2P2_EduardoCastellon {
                     menuE = false;
                     break;
                 }
-                case 1:{
+                case 1: {
                     int indice = 0;
                     listar(indice);
                     break;
@@ -117,33 +116,58 @@ public class Lap2P2_EduardoCastellon {
                     menuE = false;
                     break;
                 }
-                case 1:{
+                case 1: {
                     int indice = 0;
                     listar(indice);
                     break;
                 }
-                case 2:{
+                case 2: {
                     agregar();
                     break;
                 }
             }
         }
-    }//fin  de menu profesor
+    }//fin de menu profesor
 
     public static void menuBibliotecario() {
-        System.out.println("Bienvenido al menu de bibliotecario");
-    }
-    
-    public static void listar(int indice){
+        Scanner lea = new Scanner(System.in);
+        System.out.println("Bienvenido al menu de profesor");
+        boolean menuE = true;
+        while (menuE) {
+            System.out.println("1- Listar contenido\n"
+                    + "2- Agregar Libro\n"
+                    + "preione [3] para cerrar session");
+
+            int opc = lea.nextInt();
+            switch (opc) {
+                case 3: {
+                    System.out.println("Cerrando session\n");
+                    menuE = false;
+                    break;
+                }
+                case 1: {
+                    int indice = 0;
+                    listar(indice);
+                    break;
+                }
+                case 2: {
+                    agregar();
+                    break;
+                }
+            }
+        }
+    }//fin menu bibliotecario
+
+    public static void listar(int indice) {
         if (indice >= inventario.size()) {
             return;
         }
-        System.out.println(inventario.get(indice).toString());
+        System.out.println(indice + "- " + inventario.get(indice).toString());
         indice++;
         listar(indice);
-    }
-    
-    public static void agregar(){
+    }// fin listar
+
+    public static void agregar() {
         Scanner lea = new Scanner(System.in);
         Scanner entrada = new Scanner(System.in);
         boolean agregar = true;
@@ -155,13 +179,13 @@ public class Lap2P2_EduardoCastellon {
                     + "4- Conferencias\n"
                     + "presione [5] para salir");
             int opc = lea.nextInt();
-            switch(opc){
-                case 5:{
+            switch (opc) {
+                case 5: {
                     System.out.println("Saliendo...");
-                    agregar =false;
+                    agregar = false;
                     break;
                 }
-                case 1:{
+                case 1: {
                     System.out.println("Ingresar titulo: ");
                     String titulo = entrada.nextLine();
                     System.out.println("Ingresar autor: ");
@@ -173,7 +197,7 @@ public class Lap2P2_EduardoCastellon {
                     inventario.add((Libros) new Libros(titulo, autor, genero, year, "si"));
                     break;
                 }
-                case 2:{
+                case 2: {
                     System.out.println("Ingresar titulo: ");
                     String titulo = entrada.nextLine();
                     System.out.println("Ingresar autor: ");
@@ -185,19 +209,47 @@ public class Lap2P2_EduardoCastellon {
                     inventario.add((Articulos) new Articulos(titulo, autor, tema, fecha, "si"));
                     break;
                 }
-                case 3:{
+                case 3: {
                     System.out.println("Ingresar titulo: ");
                     String titulo = entrada.nextLine();
                     System.out.println("Ingresar instructor: ");
                     String instructor = entrada.nextLine();
                     System.out.println("Ingresar tema: ");
                     String duracion = entrada.nextLine();
-                    System.out.println("Ingresar fecha de publicacion: ");
-                    String fecha = entrada.nextLine();
-                    inventario.add((Cursos) new Cursos(titulo, instructor, duracion, fecha));
+                    System.out.println("Ingresar plataforma ");
+                    String plataforma = entrada.nextLine();
+                    inventario.add((Cursos) new Cursos(titulo, instructor, duracion, plataforma));
                     break;
                 }
-            }  
+                case 4: {
+                    System.out.println("Ingresar titulo: ");
+                    String titulo = entrada.nextLine();
+                    System.out.println("Ingresar instructor: ");
+                    String conferesista = entrada.nextLine();
+                    System.out.println("Ingresar tema: ");
+                    String fecha = entrada.nextLine();
+                    System.out.println("Ingresar plataforma ");
+                    String enlace = entrada.nextLine();
+                    inventario.add((Cursos) new Cursos(titulo, conferesista, fecha, enlace));
+                    break;
+                }
+            }
         }
+    }//fin agregar
+
+    public static void remove() {
+        Scanner lea = new Scanner(System.in);
+        System.out.println("Ingrese el indice del elemento: ");
+        int indice = lea.nextInt();
+        if (indice > inventario.size() - 1) {
+            inventario.remove(indice);
+            System.out.println("El elemento se removido");
+        } else {
+            System.out.println("No existe tal elemento");
+        }
+    }// fin de remove
+
+    public static void actualizar() {
+        
     }
 }
