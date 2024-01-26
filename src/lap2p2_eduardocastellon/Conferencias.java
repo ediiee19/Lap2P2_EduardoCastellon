@@ -22,6 +22,9 @@ public class Conferencias {
         this.enlace = enlace;
     }
 
+    public Conferencias() {
+    }
+
     public String getTitulo() {
         return titulo;
     }

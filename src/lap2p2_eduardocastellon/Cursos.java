@@ -23,6 +23,9 @@ public class Cursos {
         this.plataforma = plataforma;
     }
 
+    public Cursos() {
+    }
+
     public String getTitulo() {
         return titulo;
     }

@@ -24,6 +24,9 @@ public class Libros {
         this.disp = disp;
     }
 
+    public Libros() {
+    }
+
     public String getTitulo() {
         return titulo;
     }

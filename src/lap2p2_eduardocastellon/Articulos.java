@@ -24,6 +24,9 @@ public class Articulos {
         this.acceso = acceso;
     }
 
+    public Articulos() {
+    }
+
     public String getTitulo() {
         return titulo;
     }
